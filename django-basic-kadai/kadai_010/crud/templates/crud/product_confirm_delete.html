@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}削除{% endblock %}
+
+{% block content %}
+<h1>削除</h1>
+
+<div class="border p-3 rounded">
+  <form method="post">
+     {% csrf_token %}
+     以下の商品を削除してもよろしいですか？<br><br>
+
+     <table class="table table-bordered table-striped table-hover">
+       <thead>
+         <tr>
+           <th>商品名</th>
+           <th>価格</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>{{ object.name }}</td>
+           <td>{{ object.price }} 円</td>
+         </tr>
+       </tbody>
+     </table>
+
+     <a href="{% url 'list' %}" class="btn btn-secondary">戻る</a>
+     <input type="submit" class="btn btn-danger" value="削除" style="margin-left: 1em;">
+  </form>
+</div>
+
+{% endblock %}
