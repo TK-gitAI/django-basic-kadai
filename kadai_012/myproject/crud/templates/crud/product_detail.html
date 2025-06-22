@@ -5,19 +5,31 @@
 {% block content %}
 <h1>商品詳細</h1>
 <table class="table table-bordered table-striped table-hover">
-    <thead>
-        <tr>
-            <th>商品名</th>
-            <th>価格</th>
-        </tr>
-    </thead>
     <tbody>
         <tr>
+            <th>商品名</th>
             <td>{{ object.name }}</td>
+        </tr>
+        <tr>
+            <th>価格</th>
             <td>{{ object.price }} 円</td>
         </tr>
         <tr>
-            <td>詳細説明</td>
+            <th>カテゴリ</th>
+            <td>{{ object.category.name }}</td>
+        </tr>
+        <tr>
+            <th>商品画像</th>
+            <td>
+                {% if object.image %}
+                    <img src="{{ object.image.url }}" alt="商品画像" style="max-width:200px; max-height:200px;">
+                {% else %}
+                    画像なし
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>詳細説明</th>
             <td style="white-space: pre-wrap; padding: 1em; font-size: 1.1em; line-height: 1.6;">
                 {{ object.description }}
             </td>
